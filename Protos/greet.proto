@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option csharp_namespace = "Protos";
+
+package greet;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc CriarLivro (CriarLivroRequest) returns (LivroReply);
+  rpc AtualizarLivro (AtualizarLivroRequest) returns (LivroReply);
+  rpc RemoverLivro (RemoverLivroRequest) returns (LivroReply);
+  rpc ConsultarLivroPorTitulo (ConsultarLivroPorTituloRequest) returns (LivroReply);
+  rpc ConsultarPorAnoENumero (ConsultarPorAnoENumeroRequest) returns (LivroReply);
+}
+
+// The request message containing the user's name.
+message CriarLivroRequest{
+	string titulo = 1;
+	string autor = 2;
+	string numeroEdicao = 3;
+	int32 anoEdicao = 4;
+}
+message AtualizarLivroRequest{
+	int32 codigo = 1;
+	string titulo = 2;
+	string numeroEdicao = 3;
+	int32 anoEdicao = 4;
+}
+message RemoverLivroRequest{
+	string titulo = 1;
+	string numeroEdicao = 2;
+	int32 anoEdicao = 3;
+}
+message ConsultarLivroPorTituloRequest{
+	string titulo = 1;
+}
+message ConsultarPorAnoENumeroRequest{
+	int32 ano = 1;
+	string numero = 2;
+}
+// The response message containing the greetings.
+message LivroReply {
+  string message = 1;
+}
